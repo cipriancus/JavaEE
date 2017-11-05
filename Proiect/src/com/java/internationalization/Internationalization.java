@@ -22,7 +22,6 @@ public class Internationalization implements Serializable{
 	static{
 		countries = new LinkedHashMap<String,Object>();
 		countries.put("English", Locale.ENGLISH); //label, value
-		countries.put("Chinese", Locale.SIMPLIFIED_CHINESE);
 		countries.put("France", Locale.FRANCE);
 	}
 
