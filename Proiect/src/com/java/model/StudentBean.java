@@ -2,6 +2,7 @@ package com.java.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -19,6 +20,7 @@ public class StudentBean {
     private String password;
     private String gender;
     private String address;
+    private String message;
     private int project_id;
     private String selected;
     private List<String> skills;
@@ -77,6 +79,14 @@ public class StudentBean {
         this.address = address;
     }
 
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
     public void setRenderedError(String renderedError) {
         this.renderedError = renderedError;
     }
@@ -125,6 +135,11 @@ public class StudentBean {
         } else {
             renderedError = "true";
         }
+    }
+
+    public void allert_project(){
+        Random random=new Random();
+        this.message="Hurry up, "+ random.nextInt(10)+" are looking at this project";
     }
 
     @PostConstruct

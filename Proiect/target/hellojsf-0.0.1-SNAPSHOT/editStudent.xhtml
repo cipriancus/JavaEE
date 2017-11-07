@@ -2,7 +2,8 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible"/>
@@ -15,78 +16,86 @@
     </style>
 </h:head>
 <h:body>
-    <h:form id="form" class="form-horizontal">
-        <h:panelGrid columns="2">
+    <ui:include src="menu.xhtml" />
+    <h:form layout="block" id="form" class="form-horizontal">
+        <p:panelGrid columns="2">
             <p> : </p>
             <h:selectOneMenu value="#{language.localeCode}" onchange="submit()"
                              valueChangeListener="#{language.countryLocaleCodeChanged}">
                 <f:selectItems value="#{language.countriesInMap}" />
             </h:selectOneMenu>
-        </h:panelGrid>
-
-        <!-- menu -->
-        <ui:include src="menu.xhtml" />
-        <div class="form-group">
-            <div class="col-sm-2"></div>
+        </p:panelGrid>
+        <h:panelGroup class="form-group">
+            <h:panelGroup class="col-sm-2"></h:panelGroup>
             <h2 style="text-align: center" class="col-sm-4">#{msg['editStRc.jsf']}</h2>
-        </div>
+        </h:panelGroup>
         <hr/>
-        <div class="form-group">
+        <h:panelGroup class="form-group">
             <h:outputLabel for="username" class="control-label col-sm-2">#{msg['stName.jsf']}</h:outputLabel>
-            <div class="col-sm-4">
-                <h:inputText id="name-id" value="#{editRecordObj.name}" class="form-control"/>
-            </div>
-        </div>
-        <div class="form-group">
+            <h:panelGroup class="col-sm-4">
+                <p:inputText id="name-id" value="#{editRecordObj.name}" class="form-control"/>
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:panelGroup class="form-group">
             <h:outputLabel for="email" class="control-label col-sm-2">#{msg['email.jsf']}</h:outputLabel>
-            <div class="col-sm-4">
-                <h:inputText id="email-id" value="#{editRecordObj.email}" class="form-control"/>
-            </div>
-        </div>
-        <div class="form-group">
+            <h:panelGroup class="col-sm-4">
+                <p:inputText id="email-id" value="#{editRecordObj.email}" class="form-control">
+                    <f:validateRegex
+                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                    <f:ajax event="change" render="myMessage"/>
+                </p:inputText>
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:messages id="myMessage" globalOnly="true" showDetail="true" severity="error"/>
+        <h:panelGroup class="form-group">
             <h:outputLabel for="password-id" class="control-label col-sm-2">#{msg['pass.jsf']}</h:outputLabel>
-            <div class="col-sm-4">
+            <h:panelGroup class="col-sm-4">
                 <h:inputSecret id="password-id" value="#{editRecordObj.password}" class="form-control"/>
-            </div>
-        </div>
-        <div class="form-group">
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:panelGroup class="form-group">
             <h:outputLabel for="gender" class="control-label col-sm-2">#{msg['gen.jsf']}</h:outputLabel>
-            <div class="col-sm-4">
+            <h:panelGroup class="col-sm-4">
                 <h:selectOneRadio value="#{editRecordObj.gender}">
                     <f:selectItem itemValue="M" itemLabel="Male"/><f:selectItem itemValue="F" itemLabel="Female"/>
                 </h:selectOneRadio>
-            </div>
-        </div>
-        <div class="form-group">
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:panelGroup class="form-group">
             <h:outputLabel for="address" class="control-label col-sm-2">#{msg['adr.jsf']}</h:outputLabel>
-            <div class="col-sm-4">
-                <h:inputTextarea value="#{editRecordObj.address}" cols="50" rows="5" class="form-control"/>
-            </div>
-        </div>
-        <div class="form-group">
+            <h:panelGroup class="col-sm-4">
+                <p:inputTextarea value="#{editRecordObj.address}" cols="50" rows="5" class="form-control"/>
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:outputText id="allert_project" value="#{editRecordObj.message}" />
+        <h:outputLabel class="form-group">
+            <p:poll interval="5" listener="#{editRecordObj.allert_project}" update="allert_project" />
+        </h:outputLabel>
+        <h:panelGroup class="form-group">
             <h:outputLabel class="control-label col-sm-2">#{msg['proj.jsf']}</h:outputLabel>
-            <div class="col-sm-4">
+
+            <h:panelGroup class="col-sm-4">
                 <h:selectOneMenu value="#{editRecordObj.selected}">
                     <f:selectItems value="#{projectBean.projectList()}"
                                    var="project" itemValue="#{project.id}"
                                    itemLabel="#{project.name}"/>
                     <f:ajax listener="#{editRecordObj.listener}" render="panel-error" />
                 </h:selectOneMenu>
-            </div>
-        </div>
+            </h:panelGroup>
+        </h:panelGroup>
 
-        <h:panelGrid id="panel-error" class="control-label col-sm-4">
-        <div class="form-group">
+        <p:panelGrid id="panel-error" class="control-label col-sm-4">
+        <h:panelGroup class="form-group">
             <h:outputLabel  rendered="#{editRecordObj.renderedError}"  class="control-label col-sm-2">Maximum no in project, select another one</h:outputLabel>
-        </div>
+        </h:panelGroup>
 
-        <div class="form-group">
-            <div>
+        <h:panelGroup class="form-group">
+            <h:panelGroup>
                 <h:commandButton rendered="#{!editRecordObj.renderedError}" value="#{msg['upd.jsf']}" action="#{studentBean.updateStudentDetails(editRecordObj)}"
                                  class="btn btn-primary updateBtnStyle"/>
-            </div>
-        </div>
-        </h:panelGrid>
+            </h:panelGroup>
+        </h:panelGroup>
+        </p:panelGrid>
     </h:form>
 </h:body>
 </html>
