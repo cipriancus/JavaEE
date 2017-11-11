@@ -161,6 +161,13 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="component" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="hellojsf" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Proiect" type="462c0819:PsiDirectoryNode" />
+              <item name="WebContent" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -366,12 +373,12 @@
       <workItem from="1510046848892" duration="5364000" />
       <workItem from="1510069509936" duration="4361000" />
       <workItem from="1510386782638" duration="34000" />
-      <workItem from="1510403076968" duration="47000" />
+      <workItem from="1510403076968" duration="260000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23753000" />
+    <option name="totallyTimeSpent" value="23966000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1050" extended-state="6" />
