@@ -1,82 +1,86 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
-	xmlns:h="http://java.sun.com/jsf/html" 
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-	
+
 <h:head>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible" />
-    <h:outputStylesheet library="css" name="bootstrap.min.css" />     
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     <style type="text/css">
         .tableUpdated {
-        	width: 90% !important;
-        	margin: 17px 58px 0 !important;
+            width: 90% !important;
+            margin: 17px 58px 0 !important;
         }
         .btnSpace {
-        	margin: 17px;
-        }     
+            margin: 17px;
+        }
     </style>
 </h:head>
 <h:body>
     <center><h2><h:outputText value="#{msg['student.jsf']}"/></h2></center>
     <!-- menu -->
-    <ui:include src="menu.xhtml" />
+    <ui:include src="menu.xhtml"/>
     <h:form id="studentForm">
         <!-- internationalization -->
         <p:panelGrid columns="2">
 
             <h:selectOneMenu value="#{language.localeCode}" onchange="submit()"
                              valueChangeListener="#{language.countryLocaleCodeChanged}">
-                <f:selectItems value="#{language.countriesInMap}" />
+                <f:selectItems value="#{language.countriesInMap}"/>
             </h:selectOneMenu>
         </p:panelGrid>
 
         <!-- form -->
-        <p:dataTable scrollable="true" scrollHeight="250"  id="studentTable" binding="#{table}" value="#{studentBean.studentsList()}" var="student" class="table table-striped table-hover table-bordered tableUpdated">
+        <p:dataTable scrollable="true" scrollHeight="150" id="studentTable" binding="#{table}"
+                     value="#{studentBean.studentsList()}" var="student"
+                     class="table table-striped table-hover table-bordered tableUpdated">
             <p:column>
                 <f:facet name="header">#{msg['id.jsf']}</f:facet>
-                <h:outputText value="#{table.rowIndex + 1}" />
+                <h:outputText value="#{table.rowIndex + 1}"/>
             </p:column>
             <p:column>
                 <f:facet name="header">#{msg['stName.jsf']}</f:facet>
-                <h:outputText value="#{student.name}" />
+                <h:outputText value="#{student.name}"/>
             </p:column>
             <p:column>
                 <f:facet name="header">#{msg['email.jsf']}</f:facet>
-                <h:outputText value="#{student.email}" />
+                <h:outputText value="#{student.email}"/>
             </p:column>
             <p:column>
                 <f:facet name="header">#{msg['pass.jsf']}</f:facet>
-                <h:outputText value="#{student.password}" />
+                <h:outputText value="#{student.password}"/>
             </p:column>
             <p:column>
                 <f:facet name="header">#{msg['gen.jsf']}</f:facet>
-                <h:outputText value="#{student.gender}" />
+                <h:outputText value="#{student.gender}"/>
             </p:column>
             <p:column>
                 <f:facet name="header">#{msg['adr.jsf']}</f:facet>
-                <h:outputText value="#{student.address}" />
+                <h:outputText value="#{student.address}"/>
             </p:column>
             <p:column>
                 <f:facet name="header">#{msg['proj.jsf']}</f:facet>
-                <h:outputText value="#{projectBean.getProjectById(student.project_id).getName()}" />
+                <h:outputText value="#{projectBean.getProjectById(student.project_id).getName()}"/>
             </p:column>
             <p:column>
                 <f:facet name="header">#{msg['upd.jsf']}</f:facet>
-                <h:commandButton action="#{studentBean.editStudentRecord(student.id)}" value="Update" class="btn btn-primary" />
+                <h:commandButton action="#{studentBean.editStudentRecord(student.id)}" value="Update"
+                                 class="btn btn-primary"/>
             </p:column>
             <p:column>
                 <f:facet name="header">#{msg['del.jsf']}</f:facet>
-                <h:commandButton action="#{studentBean.deleteStudentRecord(student.id)}" value="Delete" class="btn btn-danger" />
+                <h:commandButton action="#{studentBean.deleteStudentRecord(student.id)}" value="Delete"
+                                 class="btn btn-danger"/>
             </p:column>
         </p:dataTable>
         <center>
-            <h:commandButton action="createStudent.xhtml?faces-redirect=true" value="#{msg['createNewUser.jsf']}" class="btn btn-success btnSpace" />
+            <h:commandButton action="createStudent.xhtml?faces-redirect=true" value="#{msg['createNewUser.jsf']}"
+                             class="btn btn-success btnSpace"/>
         </center>
     </h:form>
-
     <!-- footer -->
-    <ui:include src="footer.xhtml" />
+    <ui:include src="footer.xhtml"/>
 </h:body>
 </html>

@@ -23,21 +23,29 @@
     <ui:include src="menu.xhtml" />
     <center><h2><h:outputText value="Projects Records"/></h2></center>
     <h:form id="projectForm">
+
+        <p:panelGrid columns="2">
+            <h:selectOneMenu value="#{language.localeCode}" onchange="submit()"
+                             valueChangeListener="#{language.countryLocaleCodeChanged}">
+                <f:selectItems value="#{language.countriesInMap}"/>
+            </h:selectOneMenu>
+        </p:panelGrid>
+
         <p:dataTable id="projectTable" binding="#{table}" value="#{projectBean.projectList()}" var="project" scrollable="true" scrollHeight="150" >
             <p:column>
                 <f:facet name="header">Id</f:facet>
                 <h:outputText value="#{table.rowIndex + 1}" />
             </p:column>
             <p:column>
-                <f:facet name="header">Project Name</f:facet>
+                <f:facet name="header">#{msg['edit_proj_name.jsf']}</f:facet>
                 <h:outputText value="#{project.name}" />
             </p:column>
             <p:column>
-                <f:facet name="header">Project Description</f:facet>
+                <f:facet name="header">#{msg['edit_proj_desc.jsf']}</f:facet>
                 <h:outputText value="#{project.description}" />
             </p:column>
             <p:column>
-                <f:facet name="header">Maximum Project</f:facet>
+                <f:facet name="header">#{msg['edit_proj_max.jsf']}</f:facet>
                 <h:outputText value="#{project.maximumNo}" />
             </p:column>
             <p:column>

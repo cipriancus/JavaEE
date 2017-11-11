@@ -16,13 +16,13 @@
     </style>
 </h:head>
 <h:body>
-    <ui:include src="menu.xhtml" />
+    <ui:include src="menu.xhtml"/>
     <h:form layout="block" id="form" class="form-horizontal">
         <p:panelGrid columns="2">
             <p> : </p>
             <h:selectOneMenu value="#{language.localeCode}" onchange="submit()"
                              valueChangeListener="#{language.countryLocaleCodeChanged}">
-                <f:selectItems value="#{language.countriesInMap}" />
+                <f:selectItems value="#{language.countriesInMap}"/>
             </h:selectOneMenu>
         </p:panelGrid>
         <h:panelGroup class="form-group">
@@ -31,17 +31,17 @@
         </h:panelGroup>
         <hr/>
         <h:panelGroup class="form-group">
-            <h:outputLabel for="username" class="control-label col-sm-2">#{msg['stName.jsf']}</h:outputLabel>
+            <h:outputLabel for="name-id" class="control-label col-sm-2">#{msg['stName.jsf']}</h:outputLabel>
             <h:panelGroup class="col-sm-4">
                 <p:inputText id="name-id" value="#{editRecordObj.name}" class="form-control"/>
             </h:panelGroup>
         </h:panelGroup>
         <h:panelGroup class="form-group">
-            <h:outputLabel for="email" class="control-label col-sm-2">#{msg['email.jsf']}</h:outputLabel>
+            <h:outputLabel for="email-id" class="control-label col-sm-2">#{msg['email.jsf']}</h:outputLabel>
             <h:panelGroup class="col-sm-4">
                 <p:inputText id="email-id" value="#{editRecordObj.email}" class="form-control">
                     <f:validateRegex
-                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                     <f:ajax event="change" render="myMessage"/>
                 </p:inputText>
             </h:panelGroup>
@@ -54,7 +54,7 @@
             </h:panelGroup>
         </h:panelGroup>
         <h:panelGroup class="form-group">
-            <h:outputLabel for="gender" class="control-label col-sm-2">#{msg['gen.jsf']}</h:outputLabel>
+            <h:outputLabel class="control-label col-sm-2">#{msg['gen.jsf']}</h:outputLabel>
             <h:panelGroup class="col-sm-4">
                 <h:selectOneRadio value="#{editRecordObj.gender}">
                     <f:selectItem itemValue="M" itemLabel="Male"/><f:selectItem itemValue="F" itemLabel="Female"/>
@@ -62,14 +62,14 @@
             </h:panelGroup>
         </h:panelGroup>
         <h:panelGroup class="form-group">
-            <h:outputLabel for="address" class="control-label col-sm-2">#{msg['adr.jsf']}</h:outputLabel>
+            <h:outputLabel class="control-label col-sm-2">#{msg['adr.jsf']}</h:outputLabel>
             <h:panelGroup class="col-sm-4">
                 <p:inputTextarea value="#{editRecordObj.address}" cols="50" rows="5" class="form-control"/>
             </h:panelGroup>
         </h:panelGroup>
-        <h:outputText id="allert_project" value="#{editRecordObj.message}" />
+        <h:outputText id="allert_project" value="#{editRecordObj.message}"/>
         <h:outputLabel class="form-group">
-            <p:poll interval="5" listener="#{editRecordObj.allert_project}" update="allert_project" />
+            <p:poll interval="5" listener="#{editRecordObj.allert_project}" update="allert_project"/>
         </h:outputLabel>
         <h:panelGroup class="form-group">
             <h:outputLabel class="control-label col-sm-2">#{msg['proj.jsf']}</h:outputLabel>
@@ -79,22 +79,24 @@
                     <f:selectItems value="#{projectBean.projectList()}"
                                    var="project" itemValue="#{project.id}"
                                    itemLabel="#{project.name}"/>
-                    <f:ajax listener="#{editRecordObj.listener}" render="panel-error" />
+                    <f:ajax listener="#{editRecordObj.listener}" render="panel-error"/>
                 </h:selectOneMenu>
             </h:panelGroup>
         </h:panelGroup>
 
         <p:panelGrid id="panel-error" class="control-label col-sm-4">
-        <h:panelGroup class="form-group">
-            <h:outputLabel  rendered="#{editRecordObj.renderedError}"  class="control-label col-sm-2">Maximum no in project, select another one</h:outputLabel>
-        </h:panelGroup>
-
-        <h:panelGroup class="form-group">
-            <h:panelGroup>
-                <h:commandButton rendered="#{!editRecordObj.renderedError}" value="#{msg['upd.jsf']}" action="#{studentBean.updateStudentDetails(editRecordObj)}"
-                                 class="btn btn-primary updateBtnStyle"/>
+            <h:panelGroup class="form-group">
+                <h:outputLabel rendered="#{editRecordObj.renderedError}"
+                               class="control-label col-sm-2">#{msg['max_no.jsf']}</h:outputLabel>
             </h:panelGroup>
-        </h:panelGroup>
+
+            <h:panelGroup class="form-group">
+                <h:panelGroup>
+                    <h:commandButton rendered="#{!editRecordObj.renderedError}" value="#{msg['upd.jsf']}"
+                                     action="#{studentBean.updateStudentDetails(editRecordObj)}"
+                                     class="btn btn-primary updateBtnStyle"/>
+                </h:panelGroup>
+            </h:panelGroup>
         </p:panelGrid>
     </h:form>
 </h:body>
