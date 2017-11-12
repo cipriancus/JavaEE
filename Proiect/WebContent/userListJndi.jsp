@@ -12,7 +12,7 @@
 <c:set var="nm" value="<%=nCountry%>" />
 <c:if test="${(nm == 'US') }">
 
-	<sql:query var="listFr" dataSource="jdbc/UsersFr">
+	<sql:query var="list" dataSource="jdbc/UsersFr">
 	select student_name, student_email, student_password, student_gender,student_address from student_record;
 </sql:query>
 </c:if>
@@ -20,7 +20,7 @@
 <c:set var="nm" value="<%=nCountry%>" />
 <c:if test="${(nm == 'Romania') }">
 
-	<sql:query var="listRo" dataSource="jdbc/UsersRo">
+	<sql:query var="list" dataSource="jdbc/UsersRo">
 	select student_name, student_email, student_password, student_gender,student_address from student_record;
 </sql:query>
 </c:if>
@@ -45,31 +45,18 @@
 				<th>Gender</th>
 				<th>Address</th>
 			</tr>
-			<c:choose>
-				<c:when test="${nm=='France'}">
-					<c:forEach var="user" items="${listFr.rows}">
-						<tr>
-							<td><c:out value="${user.student_name}" /></td>
-							<td><c:out value="${user.student_email}" /></td>
-							<td><c:out value="${user.student_password}" /></td>
-							<td><c:out value="${user.student_gender}" /></td>
-							<td><c:out value="${user.student_address}" /></td>
-						</tr>
-					</c:forEach>
-					<br />
-				</c:when>
-				<c:otherwise>
-					<c:forEach var="user" items="${listRo.rows}">
-						<tr>
-							<td><c:out value="${user.student_name}" /></td>
-							<td><c:out value="${user.student_email}" /></td>
-							<td><c:out value="${user.student_password}" /></td>
-							<td><c:out value="${user.student_gender}" /></td>
-							<td><c:out value="${user.student_address}" /></td>
-						</tr>
-					</c:forEach>
-				</c:otherwise>
-			</c:choose>
+
+			<c:forEach var="user" items="${list.rows}">
+				<tr>
+					<td><c:out value="${user.student_name}" /></td>
+					<td><c:out value="${user.student_email}" /></td>
+					<td><c:out value="${user.student_password}" /></td>
+					<td><c:out value="${user.student_gender}" /></td>
+					<td><c:out value="${user.student_address}" /></td>
+				</tr>
+			</c:forEach>
+			<br />
+
 		</table>
 	</div>
 </body>

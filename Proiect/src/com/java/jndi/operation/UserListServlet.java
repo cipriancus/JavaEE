@@ -45,56 +45,56 @@ public class UserListServlet extends HttpServlet {
 
 			RequestDispatcher errorDispatcher = request.getRequestDispatcher("/WEB-INF/userListJndi.jsp");
 			errorDispatcher.forward(request, response);
-			try {
-				Context initContext = new InitialContext();
-				Context envContext = (Context) initContext.lookup("java:comp/env");
-				DataSource ds = (DataSource) envContext.lookup("jdbc/UsersFr");
-				Connection conn = ds.getConnection();
-
-				Statement statement = conn.createStatement();
-
-				String sql = "select student_name, student_email, student_password, student_gender,"
-						+ "student_address from student_record";
-				ResultSet rs = statement.executeQuery(sql);
-
-				int count = 1;
-				while (rs.next()) {
-					writer.println(String.format("User #%d: %-15s %s", count++, rs.getString("student_name"),
-							rs.getString("student_email"), rs.getString("student_password"),
-							rs.getString("student_gender"), rs.getString("student_address")));
-
-				}
-			} catch (NamingException ex) {
-				System.err.println(ex);
-			} catch (SQLException ex) {
-				System.err.println(ex);
-			}
-		} else if (romania.equals(request.getLocale().getCountry())) {
-			Object name = request.getAttribute("name");
-			try {
-				Context initContext = new InitialContext();
-				Context envContext = (Context) initContext.lookup("java:comp/env");
-				DataSource ds = (DataSource) envContext.lookup("jdbc/UsersRo");
-				Connection conn = ds.getConnection();
-
-				Statement statement = conn.createStatement();
-
-				String sql = "select student_name, student_email, student_password, student_gender,"
-						+ "student_address from student_record";
-				ResultSet rs = statement.executeQuery(sql);
-
-				int count = 1;
-				while (rs.next()) {
-					writer.println(String.format("User #%d: %-15s %s", count++, rs.getString("student_name"),
-							rs.getString("student_email"), rs.getString("student_password"),
-							rs.getString("student_gender"), rs.getString("student_address")));
-
-				}
-			} catch (NamingException ex) {
-				System.err.println(ex);
-			} catch (SQLException ex) {
-				System.err.println(ex);
-			}
+//			try {
+//				Context initContext = new InitialContext();
+//				Context envContext = (Context) initContext.lookup("java:comp/env");
+//				DataSource ds = (DataSource) envContext.lookup("jdbc/UsersUs");
+//				Connection conn = ds.getConnection();
+//
+//				Statement statement = conn.createStatement();
+//
+//				String sql = "select student_name, student_email, student_password, student_gender,"
+//						+ "student_address from student_record";
+//				ResultSet rs = statement.executeQuery(sql);
+//
+//				int count = 1;
+//				while (rs.next()) {
+//					writer.println(String.format("User #%d: %-15s %s", count++, rs.getString("student_name"),
+//							rs.getString("student_email"), rs.getString("student_password"),
+//							rs.getString("student_gender"), rs.getString("student_address")));
+//
+//				}
+//			} catch (NamingException ex) {
+//				System.err.println(ex);
+//			} catch (SQLException ex) {
+//				System.err.println(ex);
+//			}
+//		} else if (romania.equals(request.getLocale().getCountry())) {
+//			Object name = request.getAttribute("name");
+//			try {
+//				Context initContext = new InitialContext();
+//				Context envContext = (Context) initContext.lookup("java:comp/env");
+//				DataSource ds = (DataSource) envContext.lookup("jdbc/UsersRo");
+//				Connection conn = ds.getConnection();
+//
+//				Statement statement = conn.createStatement();
+//
+//				String sql = "select student_name, student_email, student_password, student_gender,"
+//						+ "student_address from student_record";
+//				ResultSet rs = statement.executeQuery(sql);
+//
+//				int count = 1;
+//				while (rs.next()) {
+//					writer.println(String.format("User #%d: %-15s %s", count++, rs.getString("student_name"),
+//							rs.getString("student_email"), rs.getString("student_password"),
+//							rs.getString("student_gender"), rs.getString("student_address")));
+//
+//				}
+//			} catch (NamingException ex) {
+//				System.err.println(ex);
+//			} catch (SQLException ex) {
+//				System.err.println(ex);
+//			}
 		}
 	}
 
