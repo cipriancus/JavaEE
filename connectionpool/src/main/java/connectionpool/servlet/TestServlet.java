@@ -22,18 +22,22 @@ public class TestServlet extends HttpServlet {
 		RequestRepository rep = new RequestRepository(method);
 
 		List<Request> list = rep.select();
-		if (list != null)
-			out.write(rep.select().toString());
-		else
+		if (list != null) {
+			out.write(list.toString());
+			out.close();
+		}
+		else{
 			out.write("fail");
+			out.close();
+		}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String request_time = req.getParameter("request_time");
-		String remote_addr = req.getParameter("remote_addr");
-		String request_params = req.getParameter("request_params");
-		String method = req.getParameter("method");
+		String request_time = req.getHeader("request_time");
+		String remote_addr = req.getHeader("remote_addr");
+		String request_params = req.getHeader("request_params");
+		String method = req.getHeader("method");
 		PrintWriter out = new PrintWriter(resp.getWriter());
 		RequestRepository rep = new RequestRepository(method);
 

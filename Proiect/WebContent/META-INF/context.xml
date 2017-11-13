@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+	<Resource 
+		name="jdbc/UsersFr" 
+		auth="Container" 
+		type="javax.sql.DataSource"
+		maxActive="100" 
+		maxIdle="30" 
+		maxWait="10000" 
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/usersdb" 
+		username="root"
+		password="0000" 
+		/>
+		
+		<Resource 
+		name="jdbc/UsersRo" 
+		auth="Container" 
+		type="javax.sql.DataSource"
+		maxActive="100" 
+		maxIdle="30" 
+		maxWait="10000" 
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/usersro" 
+		username="root"
+		password="0000" 
+		/>
+</Context>
