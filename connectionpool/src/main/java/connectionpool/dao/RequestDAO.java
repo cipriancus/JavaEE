@@ -2,12 +2,9 @@ package connectionpool.dao;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.annotation.Resource;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import connectionpool.model.Request;
+import connectionpool.session.SessionData;
 
 public class RequestDAO {
 
@@ -31,7 +29,7 @@ public class RequestDAO {
 
 
     public RequestDAO(String method) {
-        this.method = "singleton";
+        this.method = method;
         switch (this.method) {
             case "singleton":
                 try {
@@ -44,8 +42,7 @@ public class RequestDAO {
                 break;
             case "cps":
                 try {
-                    ctx = new InitialContext();
-                    DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/cps");
+                    DataSource ds = SessionData.getDataSource();
                     useSource = ds;
                 } catch (Exception e) {
                     e.printStackTrace();

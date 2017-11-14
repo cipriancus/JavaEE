@@ -12,4 +12,13 @@
 		<servlet-name>TestServlet</servlet-name>
 		<url-pattern>/pool</url-pattern>
 	</servlet-mapping>
+	<filter>
+		<filter-name>session</filter-name>
+		<filter-class>connectionpool.filter.SessionFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>session</filter-name>
+		<url-pattern>/pool</url-pattern>
+	</filter-mapping>
+
 </web-app>

@@ -2,7 +2,9 @@ package connectionpool.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,10 +36,19 @@ public class TestServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String request_time = req.getHeader("request_time");
-		String remote_addr = req.getHeader("remote_addr");
-		String request_params = req.getHeader("request_params");
-		String method = req.getHeader("method");
+		String request_time = Long.toString(System.currentTimeMillis());
+		String remote_addr = req.getRemoteAddr();
+		String request_params=new String();
+
+		Map map = req.getParameterMap();
+		for (Object key: map.keySet())
+		{
+			String keyStr = (String)key;
+			String[] value = (String[])map.get(keyStr);
+			request_params = request_params + (String)key + "   :   " + Arrays.toString(value);
+		}
+
+		String method = req.getParameter("method");
 		PrintWriter out = new PrintWriter(resp.getWriter());
 		RequestRepository rep = new RequestRepository(method);
 
