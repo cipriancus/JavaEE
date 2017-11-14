@@ -2,9 +2,9 @@ import requests
 import random
 import string
 import threading
+import time
 
 barrier = threading.Barrier(50)
-
 
 def send_request(id):
     barrier.wait()
@@ -22,8 +22,10 @@ def send_request(id):
         'value': value
     }
 
-    response = requests.post(url=url_str, data=data_str)
-    print(response.text)
+    with requests.session() as s:
+        s.get(url_str)
+        response = s.post(url=url_str, data=data_str)
+        print(response.text)
 
 
 def barrier_threads():
@@ -38,4 +40,6 @@ def barrier_threads():
         iterator.join()
 
 
+start_time=time.time()* 1000
 barrier_threads()
+print("Over all execution is ",int(time.time()* 1000-start_time))

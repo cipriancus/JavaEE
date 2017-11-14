@@ -21,6 +21,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: javax.servlet:servlet-api:3.0-alpha-1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.faces:mojarra-jsf-impl:2.0.0-b04" level="project" />
     <orderEntry type="library" name="Maven: com.sun.faces:mojarra-jsf-api:2.0.0-b04" level="project" />
     <orderEntry type="library" name="Maven: org.jvnet.wagon-svn:wagon-svn:1.8" level="project" />
@@ -32,7 +33,6 @@
     <orderEntry type="library" name="Maven: com.sun.faces:jsf-impl:2.2.9" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: javax.servlet:servlet-api:3.0-alpha-1" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.18" level="project" />
     <orderEntry type="library" name="Maven: org.primefaces:primefaces:5.3" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet.jsp:javax.servlet.jsp-api:2.3.1" level="project" />

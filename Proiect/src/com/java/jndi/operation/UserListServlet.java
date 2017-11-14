@@ -43,7 +43,7 @@ public class UserListServlet extends HttpServlet {
 
 			session.setAttribute("name", usa.toString().substring(1, 3));
 
-			RequestDispatcher errorDispatcher = request.getRequestDispatcher("/WEB-INF/userListJndi.jsp");
+			RequestDispatcher errorDispatcher = request.getRequestDispatcher("userListJndi.jsp");
 			errorDispatcher.forward(request, response);
 //			try {
 //				Context initContext = new InitialContext();

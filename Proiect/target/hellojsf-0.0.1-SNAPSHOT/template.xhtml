@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" http-equiv="X-UA-Conpatible"/>
+    <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+    <title>Project</title>
+    <style type="text/css">
+        .btnWidth {
+            width: 80px;
+        }
+    </style>
+</h:head>
+<h:body>
+    <!-- DEFINE CONTENT -->
+    <p:outputPanel layout="block">
+        <ui:include src="menu.xhtml"/>
+        <h:form class="form-horizontal">
+            <p:panelGrid columns="2">
+                <h:selectOneMenu value="#{language.localeCode}" onchange="submit()"
+                                 valueChangeListener="#{language.countryLocaleCodeChanged}">
+                    <f:selectItems value="#{language.countriesInMap}"/>
+                </h:selectOneMenu>
+            </p:panelGrid>
+        </h:form>
+        <ui:insert name="content">
+
+        </ui:insert>
+    </p:outputPanel>
+</h:body>
+</html>
