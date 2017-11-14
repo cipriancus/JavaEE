@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context>
+	<Resource 
+		name="jdbc/singleton" 
+		auth="Container" 
+		type="javax.sql.DataSource"
+		maxActive="1" 
+		maxIdle="1" 
+		maxWait="1" 
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/request" 
+		username="root"
+		password="0000" 
+		/>
+		
+	<Resource 
+		name="jdbc/cps" 
+		auth="Container" 
+		type="javax.sql.DataSource"
+		maxActive="100" 
+		maxIdle="30" 
+		maxWait="10000" 
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/request"
+		username="root"
+		password="0000" 
+		/>
+	
+	<Resource 
+		name="jdbc/cp" 
+		auth="Container" 
+		type="javax.sql.DataSource"
+		maxActive="100" 
+		maxIdle="30" 
+		maxWait="10000" 
+		driverClassName="com.mysql.jdbc.Driver"
+		url="jdbc:mysql://localhost:3306/request"
+		username="root"
+		password="0000" 
+		/>
+</Context>
