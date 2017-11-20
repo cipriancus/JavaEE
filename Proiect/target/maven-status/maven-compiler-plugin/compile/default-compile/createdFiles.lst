@@ -1,0 +1,9 @@
+com\java\model\StudentBean.class
+com\java\jndi\operation\UserListServlet.class
+com\java\db\operations\DatabaseOperation.class
+com\java\jpa\model\Student.class
+com\java\jpa\model\PreferenceCompoundPk.class
+com\java\jpa\model\Preference.class
+com\java\model\ProjectBean.class
+com\java\internationalization\Internationalization.class
+com\java\jpa\model\Project.class

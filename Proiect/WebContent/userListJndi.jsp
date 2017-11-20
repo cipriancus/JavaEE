@@ -12,7 +12,7 @@
 <c:set var="nm" value="<%=nCountry%>" />
 <c:if test="${(nm == 'US') }">
 
-	<sql:query var="list" dataSource="jdbc/UsersFr">
+	<sql:query var="list" dataSource="jdbc/UsersUs">
 	select student_name, student_email, student_password, student_gender,student_address from student_record;
 </sql:query>
 </c:if>

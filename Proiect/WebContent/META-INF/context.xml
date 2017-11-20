@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <Context>
 	<Resource 
-		name="jdbc/UsersFr" 
+		name="jdbc/UsersUs" 
 		auth="Container" 
 		type="javax.sql.DataSource"
 		maxActive="100" 
