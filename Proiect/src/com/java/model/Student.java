@@ -7,9 +7,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Students")
-public class Student {
+public class Student implements Serializable{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_STUDENT")
     private long studentId;
 

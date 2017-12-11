@@ -2,9 +2,10 @@ package com.java.model;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
-public class PreferenceCompoundPk {
+public class PreferenceCompoundPk implements Serializable {
 
     @Column(name = "PROJECT_ID")
     private long projectId;

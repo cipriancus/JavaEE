@@ -2,14 +2,12 @@ package com.java.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
+@Cacheable(false)
 @Table(name = "Preferences")
-public class Preference {
+public class Preference implements Serializable {
 
     @EmbeddedId
     private PreferenceCompoundPk id;

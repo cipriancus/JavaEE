@@ -2,7 +2,6 @@ package com.java.bean;
 
 import com.java.model.Project;
 import com.java.service.ProjectService;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;

@@ -6,7 +6,7 @@ import java.io.IOException;
 import com.java.persistance.PersistenceUtil;
 
 public class EntityManagerFilter implements Filter {
-    private EntityManager entityManager ;
+    private EntityManager entityManager  ;
 
     public void init(FilterConfig filterConfig) throws ServletException {
 

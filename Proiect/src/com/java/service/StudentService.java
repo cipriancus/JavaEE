@@ -37,6 +37,10 @@ public class StudentService {
         return false;
     }
 
+    public Student getStudentByEmail(String email){
+        return studentDAO.getStudentByEmail(email);
+    }
+
     public void saveStudent(Student student) {
         studentDAO.persist(student);
     }

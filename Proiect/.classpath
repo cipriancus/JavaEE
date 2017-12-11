@@ -17,17 +17,11 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Georgiana/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar" sourcepath="C:/Users/Georgiana/.m2/repository/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0-sources.jar">
+	<classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar" sourcepath="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5-sources.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_144">
 		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="org.eclipse.jst.component.archivename" value="javax.servlet-api-3.1.0.jar"/>
-			<attribute name="maven.groupId" value="javax.servlet"/>
-			<attribute name="maven.artifactId" value="javax.servlet-api"/>
-			<attribute name="maven.version" value="3.1.0"/>
-			<attribute name="maven.scope" value="compile"/>
+			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar" sourcepath="M2_REPO/javax/servlet/servlet-api/2.5/servlet-api-2.5-sources.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
