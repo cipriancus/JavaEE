@@ -15,7 +15,7 @@ public class ProjectService {
     }
 
     public List<Project> getAll() {
-        return projectDAO.getAll();
+        return projectDAO.getAllProjects();
     }
 
     public void delete(Project value) {
@@ -41,11 +41,8 @@ public class ProjectService {
         projectDAO.persist(project);
     }
 
-    /**
-     * To-Do
-     * @return
-     */
-    public Map<Project, Integer> getPreferenceOfStudents(){
-        return null;
+    public Project getProjectByName(String name){
+        return projectDAO.getProjectByName(name);
     }
+
 }

@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" name="viewport"
+		content="width=device-width, initial-scale=1"
+		http-equiv="X-UA-Conpatible" />
+	<title>Project</title>
+</h:head>
+<h:body>
+	<h:form id="createUsersForm" class="form-horizontal">
+		<p:panelGrid>
+			<p:panelGrid>
+				<h2>Create User</h2>
+			</p:panelGrid>
+		</p:panelGrid>
+		<hr />
+		<p:panelGrid>
+			<h:outputLabel for="name-id">Name</h:outputLabel>
+			<p:panelGrid>
+				<p:inputText id="name-id" value="#{registerBean.name}"
+					validatorMessage="User name is required">
+					<f:validateRequired />
+				</p:inputText>
+			</p:panelGrid>
+		</p:panelGrid>
+		<p:panelGrid>
+			<h:outputLabel for="email-id">Email</h:outputLabel>
+			<p:panelGrid>
+				<p:inputText id="email-id" value="#{registerBean.email}"
+					requiredMessage="Email required">
+				</p:inputText>
+			</p:panelGrid>
+		</p:panelGrid>
+		<p:panelGrid>
+			<h:outputLabel for="username-id">Username</h:outputLabel>
+			<p:panelGrid>
+				<p:inputText id="username-id" value="#{registerBean.username}"
+					validatorMessage="Username is required">
+					<f:validateRequired />
+				</p:inputText>
+			</p:panelGrid>
+		</p:panelGrid>
+		<p:panelGrid>
+			<h:outputLabel for="password-id">Password</h:outputLabel>
+			<p:panelGrid>
+				<h:inputSecret id="password-id" value="#{registerBean.password}" />
+			</p:panelGrid>
+		</p:panelGrid>
+		<p:panelGrid>
+			<p:panelGrid>
+				<p:panelGrid>
+					<h:commandButton value="Save" action="#{registerBean.saveUser()}"
+						class="btn btn-success btnWidth" />
+				</p:panelGrid>
+			</p:panelGrid>
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>

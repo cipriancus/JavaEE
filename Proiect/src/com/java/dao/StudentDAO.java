@@ -26,7 +26,6 @@ public class StudentDAO {
         List list = query.getResultList();
 
         txn.commit();
-        entityManager.close();
 
         if (list.isEmpty()) {
             return null;
@@ -44,7 +43,6 @@ public class StudentDAO {
         List list = query.getResultList();
 
         txn.commit();
-        entityManager.close();
 
         if (list.isEmpty()) {
             return null;
@@ -64,10 +62,9 @@ public class StudentDAO {
 
         final List<Student> studentList = new ArrayList<Student>();
 
-        resultList.forEach(
-                student ->
-                        studentList.add((Student) student)
-        );
+        for(Object student:resultList){
+            studentList.add((Student) student);
+        }
 
         return studentList;
     }
@@ -77,7 +74,6 @@ public class StudentDAO {
         txn.begin();
         entityManager.remove(value);
         txn.commit();
-        entityManager.close();
     }
 
     public void persist(Student entity) {
@@ -85,6 +81,5 @@ public class StudentDAO {
         txn.begin();
         entityManager.merge(entity);
         txn.commit();
-        entityManager.close();
     }
 }

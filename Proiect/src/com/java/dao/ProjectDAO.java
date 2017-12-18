@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 
 public class ProjectDAO {
-    @PersistenceContext
     protected EntityManager entityManager = PersistenceUtil.getEntityManager();
 
     public Project getById(Long id) {
@@ -30,7 +29,6 @@ public class ProjectDAO {
         }
 
         txn.commit();
-        entityManager.close();
 
         return (Project) list.get(0);
     }
@@ -43,7 +41,6 @@ public class ProjectDAO {
         Query query = entityManager.createQuery("from Project");
 
         txn.commit();
-        entityManager.close();
 
         return (List<Project>) query.getResultList();
     }
@@ -62,16 +59,32 @@ public class ProjectDAO {
 
         final List<Project> projectList=new ArrayList<Project>();
 
-        resultList.forEach(
-                project ->
-                        projectList.add((Project) project)
-        );
 
+        for(Project project:projectList){
+            projectList.add((Project) project);
+        }
 
         txn.commit();
-        entityManager.close();
 
         return projectList;
+    }
+
+    public Project getProjectByName(String name){
+        EntityTransaction txn = entityManager.getTransaction();
+        txn.begin();
+
+        Query query = entityManager.createQuery("from Project where name=:nameProject");
+        query.setParameter("nameProject", name);
+
+        List list = query.getResultList();
+
+        if (list.isEmpty()) {
+            return null;
+        }
+
+        txn.commit();
+
+        return (Project) list.get(0);
     }
 
     public void delete(Project value) {
@@ -87,11 +100,16 @@ public class ProjectDAO {
         txn.begin();
         entityManager.merge(entity);
         txn.commit();
-        entityManager.close();
     }
 
+    public long countProjects(){
+        EntityTransaction txn = entityManager.getTransaction();
+        txn.begin();
 
-    public int getPreferenceOfStudents(Project project){
-        return 0;
+        Query query = entityManager.createQuery("select count(p) from Project p");
+
+        txn.commit();
+
+        return (Long) query.getSingleResult();
     }
 }

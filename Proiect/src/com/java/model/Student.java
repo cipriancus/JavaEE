@@ -6,6 +6,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
+@Cacheable
 @Table(name = "Students")
 public class Student implements Serializable{
     @Id

@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Cacheable(false)
 @Table(name = "Preferences")
-public class Preference implements Serializable {
+    public class Preference implements Serializable {
 
     @EmbeddedId
     private PreferenceCompoundPk id;

@@ -1,10 +1,12 @@
 package com.java.service;
 
+import com.java.dao.ProjectDAO;
 import com.java.dao.StudentDAO;
 import com.java.dao.factory.DAOFactory;
 import com.java.model.Preference;
 import com.java.model.Student;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService {
@@ -48,5 +50,21 @@ public class StudentService {
     public boolean addPreferences(Student student, List<Preference> preferences) {
         student.setPreferences(preferences);
         return update(student);
+    }
+
+    public List<Student> incompletePreferenceList(){
+        List<Student> allStudents=studentDAO.getAll();
+
+        ProjectDAO projectDAO=DAOFactory.getProjectDAO();
+
+        long allProjects=projectDAO.countProjects();
+
+        List<Student> incompleteList=new ArrayList<Student>();
+
+        for(Student iterator:allStudents){
+            if(iterator.getPreferences().size()<allProjects)
+                incompleteList.add(iterator);
+        }
+        return incompleteList;
     }
 }

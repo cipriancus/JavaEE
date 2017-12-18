@@ -1,9 +1,12 @@
 package com.java.test;
 
+import com.java.model.Project;
 import com.java.model.Student;
+import com.java.service.ProjectService;
 import com.java.service.StudentService;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentTest {
@@ -37,6 +40,11 @@ public class StudentTest {
     @Test
     public final void getStudents() {
         List<Student> all = studentService.getAll();
-        assert (studentService != null);
+        assert (all != null);
+    }
+
+    @Test
+    public final void incompletePreferences() {
+        assert(studentService.incompletePreferenceList()!=null);
     }
 }

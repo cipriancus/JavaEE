@@ -18,6 +18,11 @@ public class PersistenceUtil {
         localEntity.set(em);
         return em;
     }
+
+    public static EntityManagerFactory getEntityManagerFactory(){
+        return emf;
+    }
+
     public static EntityManager getEntityManager() {
         if(localEntity.get() == null)
             createEntityManager();
