@@ -13,7 +13,7 @@ import com.java.model.BaseEntity;
 @Stateless
 public class GenericDAO<T extends BaseEntity> implements IGenericDAO<T>{
 	
-	@PersistenceContext(name="PersistenceUnit")
+//	@PersistenceContext(unitName = "PersistenceUnit")
 	protected EntityManager entityManager;
 	
 	@SuppressWarnings("unchecked")

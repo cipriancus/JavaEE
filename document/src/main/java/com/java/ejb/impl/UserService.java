@@ -18,4 +18,13 @@ public class UserService implements IUserService{
 		userDAO.persist(user);
 		return true;
 	}
+
+	@Override
+	public User login(String username, String password){
+		User user=userDAO.getUserByUsername(username);
+		if(user!=null&&user.getPassword().equals(password)){
+			return user;
+		}
+		return null;
+	}
 }
